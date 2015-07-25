@@ -11,7 +11,6 @@ def parseFile(filename):
     except:
         print("unable to open file: " + filename)
 
-    replaceCharacters = ['.', '*', '?']
     content = open_file.readlines()
     encodedLine = "";
     for line in content:
