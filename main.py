@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import os
 import sys
 import string
@@ -24,3 +25,9 @@ def parseFile(filename):
 #-----MAIN-----#
 line = parseFile(sys.argv[1])
 print("\nencodedLine = " + line)
+=======
+print('Hello World!')
+
+print('Hello World!')
+print ("HI!!!!!!!")
+>>>>>>> master
