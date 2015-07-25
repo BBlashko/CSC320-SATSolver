@@ -6,7 +6,6 @@ from methodCNF import generateRowCNF, generateColumnCNF, generate3X3CNF
 #-----parseFile(filename)-----#
 #Purpose: encodes input file into one string
 def parseFile(filename):
-
     try:
         open_file = open(filename)
     except:
@@ -20,7 +19,8 @@ def parseFile(filename):
     encodedLine = encodedLine.replace('.', '*').replace('0', '*').replace('?', '*')
     return encodedLine
 
-
+#-----genGrid(filename)-----#
+#Purpose:
 def genGrid(string):
     arr = [[0 for x in range(9)] for x in range(9)]
     for i in range(9):
@@ -33,10 +33,5 @@ def genGrid(string):
 line = parseFile(sys.argv[1])
 grid = genGrid(line) #generate grid
 
-
-generateRowCNF(grid)
-generateColumnCNF(grid)
+columnList = generateColumnCNF(grid) #generate a list of columns
 generate3X3CNF(grid)
-
-
-print("\nencodedLine = " + line)
