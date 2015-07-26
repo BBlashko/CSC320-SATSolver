@@ -1,8 +1,8 @@
 def generateRowCNF(grid):
-  return true
+  return 1
 
 def generateColumnCNF(grid):
-  return true
+  return 1
 
 def generate3X3CNF(grid):
-  return true
+  return 1
