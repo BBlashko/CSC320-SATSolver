@@ -1,6 +1,7 @@
 import os
 import sys
 import string
+from methodCNF import generateRowCNF, generateColumnCNF, generate3X3CNF
 
 #-----parseFile(filename)-----#
 #Purpose: encodes input file into one string
@@ -30,7 +31,12 @@ def genGrid(string):
 
 #-----MAIN-----#
 line = parseFile(sys.argv[1])
-grid = genGrid(line)
+grid = genGrid(line) #generate grid
+
+
+generateRowCNF(grid)
+generateColumnCNF(grid)
+generate3X3CNF(grid)
 
 
 print("\nencodedLine = " + line)
