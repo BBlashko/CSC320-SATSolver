@@ -1,6 +1,7 @@
 import os
 import sys
 import string
+from methodCNF import generateRowCNF, generateColumnCNF, generate3X3CNF
 
 #-----parseFile(filename)-----#
 #Purpose: encodes input file into one string
@@ -16,10 +17,26 @@ def parseFile(filename):
     for line in content:
         encodedLine += ''.join(line.split())
 
-    encodedLine = encodedLine.replace('.', '0').replace('*', '0').replace('?', '0')
+    encodedLine = encodedLine.replace('.', '*').replace('0', '*').replace('?', '*')
     return encodedLine
+
+
+def genGrid(string):
+    arr = [[0 for x in range(9)] for x in range(9)]
+    for i in range(9):
+        for j in range(9):
+            arr[i][j] = string[ i * 9 + j ]
+    return arr
 
 
 #-----MAIN-----#
 line = parseFile(sys.argv[1])
-print(line)
+grid = genGrid(line) #generate grid
+
+
+generateRowCNF(grid)
+generateColumnCNF(grid)
+generate3X3CNF(grid)
+
+
+print("\nencodedLine = " + line)
