@@ -22,8 +22,8 @@ def parseFile(filename):
 
 def genGrid(string):
     arr = [[0 for x in range(9)] for x in range(9)]
-    for i in range(8):
-        for j in range(8):
+    for i in range(9):
+        for j in range(9):
             arr[i][j] = string[ i * 9 + j ]
     return arr
 
