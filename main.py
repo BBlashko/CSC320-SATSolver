@@ -12,7 +12,7 @@ def parseFile(filename):
         print("unable to open file: " + filename)
 
     content = open_file.readlines()
-    encodedLine = "";
+    encodedLine = ""
     for line in content:
         encodedLine += ''.join(line.split())
 
