@@ -19,7 +19,7 @@ def generateColumnCNF(f, grid):
     for k in range(9):
         for y in range(8):
             for (i=y+1 in range(9)):
-                f.write(convertBase9(x, y, z) + " " + convertBase9(x, i, z) + "0\n") 
+                f.write(convertBase9(x, y, z) + " " + convertBase9(x, i, z) + "0\n")
 
 def generate3X3CNF(f, grid):
   #Turn the grid into
@@ -36,8 +36,6 @@ def generate3X3CNF(f, grid):
       cnf.append(tgrid)
   return cnf
 
-
-
 #Generate prefilled
 def generatePrefilledCNF(f, grid):
   for y in range(9):
@@ -48,4 +46,8 @@ def generatePrefilledCNF(f, grid):
 
 #Generate individual
 def generateIndivCNF(f, grid):
-  return 1
+  for y in range(9):
+    for x in range(9):
+      for z in range(9):
+        f.write(convertBase9(x, y, z)
+      f.write(' \0n') # Terminate with a 0
