@@ -59,4 +59,5 @@ line = convertBase9(line)
 grid = genGrid(line) #generate grid
 
 columnList = generateColumnCNF(grid) #generate a list of columns
-generate3X3CNF(grid)
+rowList = generateRowCNF(grid) #generate a list of rows
+boxList = generate3X3CNF(grid) #generate a list of boxes (3x3)
