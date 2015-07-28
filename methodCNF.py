@@ -32,9 +32,15 @@ def generateColumnCNF(grid):
 
 def generate3X3CNF(grid):
   #Turn the grid into
+  cnf = []
   for gridX in range(3):
     for gridY in range(3):
+      tgrid = []
       for x in range(3):
         for y in range(3):
           xpos = gridX * 3 + x
           ypos = gridY * 3 + y
+          tgrid.append(grid[x][y])
+      cnf.append(getNeededNumbers(tgrid))
+      cnf.append(tgrid)
+  return cnf
