@@ -40,7 +40,7 @@ def generate3X3CNF(grid):
         for y in range(3):
           xpos = gridX * 3 + x
           ypos = gridY * 3 + y
-          tgrid.append(grid[x][y])
+          tgrid.append(grid[xpos][ypos])
       cnf.append(getNeededNumbers(tgrid))
       cnf.append(tgrid)
   return cnf

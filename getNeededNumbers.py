@@ -4,7 +4,7 @@
 #         outputs needed number into a string of 0's and 1's if number needed location in string is a 1
 #         EG. returns "000011001" numbers needed are 5, 6, 8
 def getNeededNumbers(sector):
-  neededNumbers = ['1', '1', '1', '1', '1', '1', '1', '1', '1',]
+  neededNumbers = ['1', '1', '1', '1', '1', '1', '1', '1', '1']
 
   print(sector)
   #for each character in sector determine if number is present. if so replace
