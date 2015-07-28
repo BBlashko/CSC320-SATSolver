@@ -4,8 +4,8 @@ def generateRowCNF(grid):
 	for y in range(GRID):
 	rows = []
 		for x in range(GRID):
-		rows.append(grid[x][y])
-		rows_list.append(rows)
+			rows.append(grid[x][y])
+			rows_list.append(rows)
 	return rows_list
 
 def generateColumnCNF(grid):
