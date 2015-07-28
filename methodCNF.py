@@ -4,9 +4,9 @@ from getNeededNumbers import getNeededNumbers
 
 def generateRowCNF(grid):
   rows_list = []
-  for y in range(GRID):
+  for y in range(9):
     rows = []
-    for x in range(GRID):
+    for x in range(9):
       rows.append(grid[x][y])
     # Find the needed number for each of the rows, and once that is done, append the result of the rows into rows_list
     rows.append(getNeededNumbers(rows))
