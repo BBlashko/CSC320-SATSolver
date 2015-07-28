@@ -3,6 +3,7 @@
 #Purpose: Given a single column, row, 9x9 box, determine what numbers are needed
 #         outputs needed number into a string of 0's and 1's if number needed location in string is a 1
 #         EG. returns "000011001" numbers needed are 5, 6, 8
+
 def getNeededNumbers(sector):
   neededNumbers = ['1', '1', '1', '1', '1', '1', '1', '1', '1']
 

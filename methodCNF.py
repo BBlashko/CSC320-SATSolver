@@ -1,7 +1,6 @@
 #Import the needed numbers to find which number is required for each row in the grid.
 from getNeededNumbers import getNeededNumbers
 
-
 def generateRowCNF(grid):
   rows_list = []
   for x in range(9):
