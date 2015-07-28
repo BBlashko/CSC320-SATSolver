@@ -32,4 +32,4 @@ def getNeededNumbers(sector):
   #convert neededNumbers back into a string and return
   neededNumbers = "".join(neededNumbers)
   print(neededNumbers)
-  return neededNumbers;
+  return neededNumbers
