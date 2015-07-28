@@ -51,7 +51,18 @@ clauses += generateIndivCNF(f, grid) #generate individual stuff
 clauses += generateColumnCNF(f, grid) #generate a list of columns
 clauses += generateRowCNF(f, grid) #generate a list of rows
 clauses += generate3X3CNF(f, grid) #generate a list of boxes (3x3)
-f.write("p cnf 729 " + str(clauses) + "\n")
 f.close()
+
+f = open('tempOutput.txt','r')
+temp = f.read()
+f.close()
+
+f = open('tempOutput.txt', 'w')
+f.write("p cnf 729 " + str(clauses) + "\n")
+
+f.write(temp)
+f.close()
+
+
 
 call(["minisat", "tempOutput.txt", "SATOutput.txt"])
