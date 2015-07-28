@@ -6,7 +6,7 @@ def generateRowCNF(f, grid):
     for z in range(9):
       for x in range(8):
         for i in range(x + 1, 9):
-          f.write(str(convertBase9(x, y, z)) + " "+  str(convertBase9(i, y, z)) + " 0\n")
+          f.write(str(convertBase9(x, y, z)) + " " +  str(convertBase9(i, y, z)) + " 0\n")
 
 
 #-----generateColumnCNF(grid)-----#
@@ -54,7 +54,7 @@ def generateIndivCNF(f, grid):
   for y in range(9):
     for x in range(9):
       for z in range(9):
-        f.write(str(convertBase9(x, y, z)))
+        f.write(str(convertBase9(x, y, z))+' ')
       f.write(' 0\n') # Terminate with a 0
 
 
