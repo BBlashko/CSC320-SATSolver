@@ -3,16 +3,15 @@ from getNeededNumbers import getNeededNumbers
 
 
 def generateRowCNF(grid):
-	rows_list = []
-	for y in range(GRID):
-	rows = []
-		for x in range(GRID):
-			rows.append(grid[x][y])
-	# Find the needed number for each of the rows, and once that is done, append the result of the rows into rows_list
-	rows.append(getNeededNumbers(rows))
-    	rows_list.append(rows)
-
-return rows_list
+  rows_list = []
+  for y in range(GRID):
+    rows = []
+    for x in range(GRID):
+      rows.append(grid[x][y])
+    # Find the needed number for each of the rows, and once that is done, append the result of the rows into rows_list
+    rows.append(getNeededNumbers(rows))
+    rows_list.append(rows)
+  return rows_list
 
 #-----generateColumnCNF(grid)-----#
 #Purpose:
