@@ -16,9 +16,10 @@ convert it to a set of boolean formulae (used by SAT solvers) to solve the puzzl
 ##Instructions:
 
 1) Download the SudokuSolver.zip file
+
 2) After extraction, run the following command: 
 
-	    python sudokusolver.py SampleInput.txt
+	python sudokusolver.py SampleInput.txt
 
 --Input Format--
 to be added...
