@@ -10,7 +10,9 @@ def parseFile(filename):
   try:
     open_file = open(filename)
   except:
-    print("unable to open file: " + filename)
+    print("Error: File not found")
+    print("Unable to open file: " + filename)
+    sys.exit(-1)
 
   content = open_file.readlines()
   encodedLine = ""
@@ -47,6 +49,11 @@ def convertBase9(line):
   return line
 
 #-----MAIN-----#
+if len(sys.argv) < 2:
+  print("Error: Incorrect arguments")
+  print("To run: python main.py <input>")
+  sys.exit(-1)
+
 line = parseFile(sys.argv[1])
 line = convertBase9(line)
 grid = genGrid(line) #generate grid
