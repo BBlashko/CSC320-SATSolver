@@ -15,17 +15,11 @@ def generateRowCNF(f, grid):
 #-----generateColumnCNF(grid)-----#
 #Purpose:
 def generateColumnCNF(f, grid):
-  columnslist = []
-  for y in range(9):
-    column = []
-    for x in range(9):
-      column.append(grid[x][y])
-
-    #calculate the needed number in each column.
-    #Eg. '001100000' columns needs numbers 2 and 3
-    column.append(column)
-    columnslist.append(column)
-  return columnslist
+  for x in range(9):
+    for k in range(9):
+        for y in range(8):
+            for (i=y+1 in range(9)):
+                f.write(convertBase9(x, y, z) + " " + convertBase9(x, i, z) + "0\n") 
 
 def generate3X3CNF(f, grid):
   #Turn the grid into
@@ -55,17 +49,3 @@ def generatePrefilledCNF(f, grid):
 #Generate individual
 def generateIndivCNF(f, grid):
   return 1
-
-
-
-
-
-
-
-
-
-
-
-
-
-
