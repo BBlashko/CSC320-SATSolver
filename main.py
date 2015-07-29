@@ -4,7 +4,7 @@ import string
 import re
 from methodCNF import generateRowCNF, generateColumnCNF, generate3X3CNF, generatePrefilledCNF, generateIndivCNF
 from utils import convertBase9
-
+from subprocess import call
 
 #-----parseFile(filename)-----#
 #Purpose: encodes input file into one string
@@ -44,15 +44,25 @@ line = parseFile(sys.argv[1])
 grid = genGrid(line) #generate grid
 
 #generate minimal clauses
-f = open('output.txt', 'w')
-generatePrefilledCNF(f, grid) #generate prefilled stuff
-generateIndivCNF(f, grid) #generate individual stuff
-generateColumnCNF(f, grid) #generate a list of columns
-generateRowCNF(f, grid) #generate a list of rows
-generate3X3CNF(f, grid) #generate a list of boxes (3x3)
+clauses = 0
+f = open('tempOutput.txt', 'w')
+clauses += generatePrefilledCNF(f, grid) #generate prefilled stuff
+clauses += generateIndivCNF(f, grid) #generate individual stuff
+clauses += generateColumnCNF(f, grid) #generate a list of columns
+clauses += generateRowCNF(f, grid) #generate a list of rows
+clauses += generate3X3CNF(f, grid) #generate a list of boxes (3x3)
 f.close()
 
-#plug into sat solver.
-#
-# here
-#
+f = open('tempOutput.txt','r')
+temp = f.read()
+f.close()
+
+f = open('tempOutput.txt', 'w')
+f.write("p cnf 729 " + str(clauses) + "\n")
+
+f.write(temp)
+f.close()
+
+
+
+call(["minisat", "tempOutput.txt", "SATOutput.txt"])
