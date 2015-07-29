@@ -67,7 +67,6 @@ def generateIndivCNF(f, grid):
     for x in range(1, 10):
       for z in range(1, 10):
         f.write(str(convertBase9(x, y, z))+' ')
-        count += 1
       f.write(' 0\n') # Terminate with a 0
-
+      count += 1
   return count
