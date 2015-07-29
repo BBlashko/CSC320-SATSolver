@@ -2,21 +2,11 @@
 from utils import convertBase9
 
 def generateRowCNF(f, grid):
-  rows_list = []
-  for x in range(9):
-    rows = []
-    for y in range(9):
-      rows.append(grid[x][y])
-    # Find the needed number for each of the rows, and once that is done, append the result of the rows into rows_list
-    rows.append(rows)
-    rows_list.append(rows)
-
-  return rows_list
-for y in range(9):
+  for y in range(9):
 		for z in range(9):
 			for x in range(8):
-				for (i=x+1 in range(9)):
-					f.write(convertBase9(x, y, z)+ " "+  convertBase9(i, y, z) + "\0n")
+				for (i in range(x + 1, 9)):
+					f.write(convertBase9(x, y, z)+ " "+  convertBase9(i, y, z) + " 0\n")
 
 
 #-----generateColumnCNF(grid)-----#
@@ -25,8 +15,8 @@ def generateColumnCNF(f, grid):
   for x in range(9):
     for k in range(9):
         for y in range(8):
-            for (i=y+1 in range(9)):
-                f.write(convertBase9(x, y, z) + " " + convertBase9(x, i, z) + "0\n")
+            for (i in range(y + 1, 9)):
+                f.write(convertBase9(x, y, z) + " " + convertBase9(x, i, z) + " 0\n")
 
 def generate3X3CNF(f, grid):
   #Turn the grid into
