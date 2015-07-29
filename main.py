@@ -2,7 +2,7 @@ import os
 import sys
 import string
 import re
-from methodCNF import generateRowCNF, generateColumnCNF, generate3X3CNF
+from methodCNF import generateRowCNF, generateColumnCNF, generate3X3CNF, generatePrefilledCNF, generateIndivCNF
 
 #-----parseFile(filename)-----#
 #Purpose: encodes input file into one string
@@ -33,20 +33,9 @@ def genGrid(string):
 
 #-----convertBase9(line)-----#
 #Purpose: convert the encoded string to base 9 by subtracting 1 from all digits.
-def convertBase9(line):
-  line = list(line)
-  count = 0
+def convertBase9(x,y,z):
+  return (x-1)*81 + (y-1)*9 + (z-1) + 1
 
-  # check each character for digits. if digit substract 1
-  for character in line:
-    match = re.match('\d', character)
-    if(match):
-      line[count] = str(int(character)-1)
-    count += 1
-
-  # join back into a string and return
-  line = "".join(line);
-  return line
 
 #-----MAIN-----#
 if len(sys.argv) < 2:
@@ -55,9 +44,11 @@ if len(sys.argv) < 2:
   sys.exit(-1)
 
 line = parseFile(sys.argv[1])
-line = convertBase9(line)
 grid = genGrid(line) #generate grid
 
+#All minimal (no extendid)
+prefilled = generatePrefilledCNF(grid) #generate prefilled stuff
+invididual = generateIndivCNF(grid) #generate individual stuff
 columnList = generateColumnCNF(grid) #generate a list of columns
 rowList = generateRowCNF(grid) #generate a list of rows
 boxList = generate3X3CNF(grid) #generate a list of boxes (3x3)

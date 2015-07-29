@@ -15,7 +15,6 @@ def generateRowCNF(grid):
 #-----generateColumnCNF(grid)-----#
 #Purpose:
 def generateColumnCNF(grid):
-  print("\ngetting needed numbers for generateColumnCNF \n")
   columnslist = []
   for y in range(9):
     column = []
@@ -26,7 +25,6 @@ def generateColumnCNF(grid):
     #Eg. '001100000' columns needs numbers 2 and 3
     column.append(getNeededNumbers(column))
     columnslist.append(column)
-
   return columnslist
 
 def generate3X3CNF(grid):
@@ -43,3 +41,12 @@ def generate3X3CNF(grid):
       cnf.append(getNeededNumbers(tgrid))
       cnf.append(tgrid)
   return cnf
+
+
+#Generate prefilled
+def generatePrefilledCNF(grid):
+  return 1
+
+#Generate individual
+def generateIndivCNF(grid):
+  return 1

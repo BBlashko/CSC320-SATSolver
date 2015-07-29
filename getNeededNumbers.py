@@ -7,7 +7,6 @@
 def getNeededNumbers(sector):
   neededNumbers = ['1', '1', '1', '1', '1', '1', '1', '1', '1']
 
-  print(sector)
   #for each character in sector determine if number is present. if so replace
   #numbers corresponding location with a '0'
   for character in sector:
