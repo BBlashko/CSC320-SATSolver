@@ -63,6 +63,4 @@ f.write("p cnf 729 " + str(clauses) + "\n")
 f.write(temp)
 f.close()
 
-
-
-call(["minisat", "tempOutput.txt", "SATOutput.txt"])
+call(["minisat", "tempOutput.txt", "SATOutput1.txt"])
