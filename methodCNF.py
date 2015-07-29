@@ -3,10 +3,10 @@ from utils import convertBase9
 
 def generateRowCNF(f, grid):
   for y in range(9):
-		for z in range(9):
-			for x in range(8):
-				for (i in range(x + 1, 9)):
-					f.write(convertBase9(x, y, z)+ " "+  convertBase9(i, y, z) + " 0\n")
+    for z in range(9):
+      for x in range(8):
+        for i in range(x + 1, 9):
+          f.write(str(convertBase9(x, y, z)) + " "+  str(convertBase9(i, y, z)) + " 0\n")
 
 
 #-----generateColumnCNF(grid)-----#
@@ -14,9 +14,9 @@ def generateRowCNF(f, grid):
 def generateColumnCNF(f, grid):
   for x in range(9):
     for k in range(9):
-        for y in range(8):
-            for (i in range(y + 1, 9)):
-                f.write(convertBase9(x, y, z) + " " + convertBase9(x, i, z) + " 0\n")
+      for y in range(8):
+        for i in range(y + 1, 9):
+          f.write(str(convertBase9(x, y, k)) + " " + str(convertBase9(x, i, k)) + " 0\n")
 
 def generate3X3CNF(f, grid):
   #Turn the grid into
@@ -31,7 +31,7 @@ def generate3X3CNF(f, grid):
               a = gridX * 3 + x
               b = gridY * 3 + y
               c = gridX * 3 + k
-              f.write('-' + convertBase9(a,b,z) + ' -' + convertBase9(a,c,z) + ' 0\n')
+              f.write('-' + str(convertBase9(a,b,z)) + ' -' + str(convertBase9(a,c,z)) + ' 0\n')
 
             for k in range (x + 1, 4):
               for l in range(1, 4):
@@ -39,14 +39,14 @@ def generate3X3CNF(f, grid):
                 b = gridY * 3 + y
                 c = gridX * 3 + k
                 d = gridY * 3 + l
-                f.write('-' +  convertBase9(a,b,z) + ' -' + convertBase9(c,d,z) + ' 0\n')
+                f.write('-' +  str(convertBase9(a,b,z)) + ' -' + str(convertBase9(c,d,z)) + ' 0\n')
 
 #Generate prefilled
 def generatePrefilledCNF(f, grid):
   for y in range(9):
     for x in range(9):
       if grid[x][y] != '*':
-        f.write(convertBase9(x, y, int(grid[x][y]))+ ' 0\n') #Terminate with a 0
+        f.write(str(convertBase9(x, y, int(grid[x][y]))) + ' 0\n') #Terminate with a 0
 
 
 #Generate individual
@@ -54,8 +54,8 @@ def generateIndivCNF(f, grid):
   for y in range(9):
     for x in range(9):
       for z in range(9):
-        f.write(convertBase9(x, y, z)
-      f.write(' \0n') # Terminate with a 0
+        f.write(str(convertBase9(x, y, z)))
+      f.write(' 0\n') # Terminate with a 0
 
 
 
