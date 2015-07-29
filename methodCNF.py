@@ -68,52 +68,6 @@ def generateIndivCNF(f, grid):
       f.write(' \0n') # Terminate with a 0
 
 
-					
-		
-
-
-
-void generateRowCNF(char *input)
-{
-	int x, y, z, i;
-	char tempBuffer[TEMPBUFFERSIZE];
-	
-	sprintf(input, "c ***Clauses for Rows***\n");
-	for (y=1; y<=9; y++)
-	{
-		for (z=1; z<=9; z++)
-		{
-			/*Generates the required minimal clauses*/
-			for (x=1; x<=8; x++)
-			{
-				for (i=x+1; i<=9; i++)
-				{
-					sprintf(tempBuffer, "-%d -%d 0\n", convertNumber(x,y,z), convertNumber(i,y,z));
-					strcat(input, tempBuffer);
-					CLAUSECOUNT++;
-				}
-			}
-			
-			/*Generates the extended clauses*/
-			if(SOLVINGMODE == EXTENDED)
-			{
-				sprintf(tempBuffer, "%d %d %d %d %d %d %d %d %d 0\n", convertNumber(1,y,z), convertNumber(2,y,z), convertNumber(3,y,z),
-				 convertNumber(4,y,z), convertNumber(5,y,z), convertNumber(6,y,z), convertNumber(7,y,z), convertNumber(8,y,z),
-				 convertNumber(9,y,z));
-				strcat(input, tempBuffer);
-				CLAUSECOUNT++;
-			}
-			
-		}
-	}
-}
-
-
-
-
-
-
-
 
 
 
