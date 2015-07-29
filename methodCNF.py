@@ -54,7 +54,12 @@ def generatePrefilledCNF(f, grid):
 
 #Generate individual
 def generateIndivCNF(f, grid):
-  return 1
+  for y in range(9):
+    for x in range(9):
+      for z in range(9):
+        f.write(convertBase9(x, y, z)
+      f.write(' \0n') # Terminate with a 0
+
 
 
 def generateRowCNF(f):
