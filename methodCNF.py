@@ -17,7 +17,7 @@ def generateColumnCNF(f, grid):
   count = 0
   for x in range(1,10):
     for z in range(1, 10):
-      for y in range(1,9):
+      for  in range(1,9):
         for i in range(y + 1, 10):
           f.write("-" + str(convertBase9(x, y, z)) + " -" + str(convertBase9(x, i, z)) + " 0\n")
           count += 1
@@ -53,8 +53,8 @@ def generate3X3CNF(f, grid):
 #Generate prefilled
 def generatePrefilledCNF(f, grid):
   count = 0
-  for y in range(9):
-    for x in range(9):
+  for x in range(9):
+    for y in range(9):
       if grid[x][y] != '*':
         f.write(str(convertBase9(x+1, y+1, int(grid[x][y]))) + ' 0\n') #Terminate with a 0
         count += 1
@@ -63,8 +63,8 @@ def generatePrefilledCNF(f, grid):
 #Generate individual
 def generateIndivCNF(f, grid):
   count = 0
-  for y in range(1, 10):
-    for x in range(1, 10):
+  for x in range(1, 10):
+    for y in range(1, 10):
       for z in range(1, 10):
         f.write(str(convertBase9(x, y, z))+' ')
       f.write(' 0\n') # Terminate with a 0
