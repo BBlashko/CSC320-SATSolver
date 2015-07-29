@@ -3,6 +3,8 @@ import sys
 import string
 import re
 from methodCNF import generateRowCNF, generateColumnCNF, generate3X3CNF, generatePrefilledCNF, generateIndivCNF
+from utils import convertBase9
+
 
 #-----parseFile(filename)-----#
 #Purpose: encodes input file into one string
@@ -31,11 +33,6 @@ def genGrid(string):
       arr[i][j] = string[ i * 9 + j ]
   return arr
 
-#-----convertBase9(line)-----#
-#Purpose: convert the encoded string to base 9 by subtracting 1 from all digits.
-def convertBase9(x,y,z):
-  return (x-1)*81 + (y-1)*9 + (z-1) + 1
-
 
 #-----MAIN-----#
 if len(sys.argv) < 2:
@@ -46,7 +43,7 @@ if len(sys.argv) < 2:
 line = parseFile(sys.argv[1])
 grid = genGrid(line) #generate grid
 
-#All minimal (no extendid)
+#generate minimal clauses
 f = open('output.txt', 'w')
 generatePrefilledCNF(f, grid) #generate prefilled stuff
 generateIndivCNF(f, grid) #generate individual stuff
@@ -54,3 +51,8 @@ generateColumnCNF(f, grid) #generate a list of columns
 generateRowCNF(f, grid) #generate a list of rows
 generate3X3CNF(f, grid) #generate a list of boxes (3x3)
 f.close()
+
+#plug into sat solver.
+#
+# here
+#

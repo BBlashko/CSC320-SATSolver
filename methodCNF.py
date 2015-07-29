@@ -1,6 +1,5 @@
 #Import the needed numbers to find which number is required for each row in the grid.
-from getNeededNumbers import getNeededNumbers
-from main import convertBase9
+from utils import convertBase9
 
 def generateRowCNF(f, grid):
   rows_list = []
@@ -9,7 +8,7 @@ def generateRowCNF(f, grid):
     for y in range(9):
       rows.append(grid[x][y])
     # Find the needed number for each of the rows, and once that is done, append the result of the rows into rows_list
-    rows.append(getNeededNumbers(rows))
+    rows.append(rows)
     rows_list.append(rows)
   return rows_list
 
@@ -24,7 +23,7 @@ def generateColumnCNF(f, grid):
 
     #calculate the needed number in each column.
     #Eg. '001100000' columns needs numbers 2 and 3
-    column.append(getNeededNumbers(column))
+    column.append(column)
     columnslist.append(column)
   return columnslist
 
@@ -39,7 +38,7 @@ def generate3X3CNF(f, grid):
           xpos = gridX * 3 + x
           ypos = gridY * 3 + y
           tgrid.append(grid[xpos][ypos])
-      cnf.append(getNeededNumbers(tgrid))
+      cnf.append(tgrid)
       cnf.append(tgrid)
   return cnf
 
