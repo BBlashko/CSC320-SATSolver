@@ -30,18 +30,26 @@ def generateColumnCNF(f, grid):
 def generate3X3CNF(f, grid):
   #Turn the grid into
   cnf = []
-  for gridX in range(3):
-    for gridY in range(3):
-      tgrid = []
-      for x in range(3):
-        for y in range(3):
-          xpos = gridX * 3 + x
-          ypos = gridY * 3 + y
-          tgrid.append(grid[xpos][ypos])
-      cnf.append(tgrid)
-      cnf.append(tgrid)
-  return cnf
+  for gridX in range(0, 3):    #Grid (3x3 boxes) along the X axis
+    for gridY in range(0, 3):  #Grid (3x3 boxes) along the Y axis
+      for z in range(1, 10):    #Numbers from 0-8 (possible input values, in base 9)
+        for x in range(1, 3):
+          for y in range(1, 3):
 
+            #Minimal clauses
+            for k in range(y + 1, 4):
+              a = gridX * 3 + x
+              b = gridY * 3 + y
+              c = gridX * 3 + k
+              f.write('-' + convertBase9(a,b,z) + ' -' + convertBase9(a,c,z) + ' 0\n')
+
+            for k in range (x + 1, 4):
+              for l in range(1, 4):
+                a = gridX * 3 + x
+                b = gridY * 3 + y
+                c = gridX * 3 + k
+                d = gridY * 3 + l
+                f.write('-' +  convertBase9(a,b,z) + ' -' + convertBase9(c,d,z) + ' 0\n')
 
 
 #Generate prefilled
