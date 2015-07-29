@@ -10,7 +10,14 @@ def generateRowCNF(f, grid):
     # Find the needed number for each of the rows, and once that is done, append the result of the rows into rows_list
     rows.append(rows)
     rows_list.append(rows)
+
   return rows_list
+for y in range(9):
+		for z in range(9):
+			for x in range(8):
+				for (i=x+1 in range(9)):
+					f.write(convertBase9(x, y, z)+ " "+  convertBase9(i, y, z) + "\0n")
+					
 
 #-----generateColumnCNF(grid)-----#
 #Purpose:
@@ -60,14 +67,6 @@ def generateIndivCNF(f, grid):
         f.write(convertBase9(x, y, z)
       f.write(' \0n') # Terminate with a 0
 
-
-
-def generateRowCNF(f):
-	for y in range(9):
-		for z in range(9):
-			for x in range(8):
-				for i=x+1 in range(9):
-					f.write(convertBase9(x, y, z), convertBase9(i, y, z)
 
 					
 		
