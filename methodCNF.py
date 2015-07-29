@@ -1,7 +1,8 @@
 #Import the needed numbers to find which number is required for each row in the grid.
 from getNeededNumbers import getNeededNumbers
+from main import convertBase9
 
-def generateRowCNF(grid):
+def generateRowCNF(f, grid):
   rows_list = []
   for x in range(9):
     rows = []
@@ -14,7 +15,7 @@ def generateRowCNF(grid):
 
 #-----generateColumnCNF(grid)-----#
 #Purpose:
-def generateColumnCNF(grid):
+def generateColumnCNF(f, grid):
   columnslist = []
   for y in range(9):
     column = []
@@ -27,7 +28,7 @@ def generateColumnCNF(grid):
     columnslist.append(column)
   return columnslist
 
-def generate3X3CNF(grid):
+def generate3X3CNF(f, grid):
   #Turn the grid into
   cnf = []
   for gridX in range(3):
@@ -44,9 +45,9 @@ def generate3X3CNF(grid):
 
 
 #Generate prefilled
-def generatePrefilledCNF(grid):
+def generatePrefilledCNF(f, grid):
   return 1
 
 #Generate individual
-def generateIndivCNF(grid):
+def generateIndivCNF(f, grid):
   return 1

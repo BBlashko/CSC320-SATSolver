@@ -47,8 +47,10 @@ line = parseFile(sys.argv[1])
 grid = genGrid(line) #generate grid
 
 #All minimal (no extendid)
-prefilled = generatePrefilledCNF(grid) #generate prefilled stuff
-invididual = generateIndivCNF(grid) #generate individual stuff
-columnList = generateColumnCNF(grid) #generate a list of columns
-rowList = generateRowCNF(grid) #generate a list of rows
-boxList = generate3X3CNF(grid) #generate a list of boxes (3x3)
+f = open('output.txt', 'w')
+generatePrefilledCNF(f, grid) #generate prefilled stuff
+generateIndivCNF(f, grid) #generate individual stuff
+generateColumnCNF(f, grid) #generate a list of columns
+generateRowCNF(f, grid) #generate a list of rows
+generate3X3CNF(f, grid) #generate a list of boxes (3x3)
+f.close()
