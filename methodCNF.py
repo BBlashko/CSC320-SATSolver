@@ -43,10 +43,29 @@ def generate3X3CNF(f, grid):
   return cnf
 
 
+
 #Generate prefilled
 def generatePrefilledCNF(f, grid):
-  return 1
+  for y in range(9):
+    for x in range(9):
+      if grid[x][y] != '*':
+        f.write(convertBase9(x, y, int(grid[x][y]))+ ' 0\n') #Terminate with a 0
+
 
 #Generate individual
 def generateIndivCNF(f, grid):
   return 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
