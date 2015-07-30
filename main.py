@@ -63,4 +63,41 @@ f.write("p cnf 729 " + str(clauses) + "\n")
 f.write(temp)
 f.close()
 
-call(["minisat", "tempOutput.txt", "SATOutput1.txt"])
+call(["minisat", "tempOutput.txt", "SATOutput.txt"])
+
+# Decode output file
+f = open('SATOutput.txt','r')
+sat = f.readline()
+numbers = f.readline()
+asArr = numbers.split(' ')
+
+for i in range(len(asArr)):
+  asArr[i] = int(asArr[i])
+
+print(sat)
+
+for y in range(9):
+  line = ''
+  for x in range(9):
+    for z in range(9):
+      if(asArr[y*81 + 9*x + z] >= 0):
+        line = line + str(z + 1) + ' '
+        break
+  print(line + '\n')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
