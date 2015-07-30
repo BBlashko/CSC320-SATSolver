@@ -67,23 +67,28 @@ call(["minisat", "tempOutput.txt", "SATOutput.txt"])
 
 # Decode output file
 f = open('SATOutput.txt','r')
-sat = f.readline()
-numbers = f.readline()
-asArr = numbers.split(' ')
+sat = f.readline().strip()
 
-for i in range(len(asArr)):
-  asArr[i] = int(asArr[i])
+if(sat == 'SAT'):
+  print('Problem is satisfiable')
+  numbers = f.readline()
+  asArr = numbers.split(' ')
 
-print(sat)
+  for i in range(len(asArr)):
+    asArr[i] = int(asArr[i])
 
-for y in range(9):
-  line = ''
-  for x in range(9):
-    for z in range(9):
-      if(asArr[y*81 + 9*x + z] >= 0):
-        line = line + str(z + 1) + ' '
-        break
-  print(line + '\n')
+
+  for y in range(9):
+    line = ''
+    for x in range(9):
+      for z in range(9):
+        if(asArr[y*81 + 9*x + z] >= 0):
+          line = line + str(z + 1) + ' '
+          break
+    print(line + '\n')
+
+else:
+  print('Problem is unsatisfiable.')
 
 
 
