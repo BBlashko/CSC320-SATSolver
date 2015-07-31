@@ -25,7 +25,7 @@ def parseFile(filename):
   return encodedLine
 
 #-----genGrid(filename)-----#
-#Purpose:
+#Purpose: create a 2 by 2 array of the input puzzle
 def genGrid(string):
   arr = [[0 for x in range(9)] for x in range(9)]
   for i in range(9):
@@ -35,6 +35,9 @@ def genGrid(string):
 
 
 #-----MAIN-----#
+#Purpose: Controls the main flow of the program
+
+print("Starting the SAT Solver!\n")
 if len(sys.argv) < 2:
   print("Error: Incorrect arguments")
   print("To run: python main.py <input>")
@@ -63,20 +66,39 @@ f.write("p cnf 729 " + str(clauses) + "\n")
 f.write(temp)
 f.close()
 
+# input into minisat
 call(["minisat", "tempOutput.txt", "SATOutput.txt"])
 
 # Decode output file
 f = open('SATOutput.txt','r')
 sat = f.readline().strip()
 
+print("\nInput puzzle:\n")
+
+# print input puzzle
+open_file = open("SolvedPuzzle.txt", 'w')
+open_file.write("SAT Solver: Sudoku!\n\n")
+open_file.write("\nInput puzzle:\n")
+for x in range(0, 9):
+  line = ''
+  for y in range(0, 9):
+    line = line + grid[x][y] + " "
+  print(line + "\n")
+  open_file.write(line + "\n")
+
+open_file.write("\n\n")
+
+# output solved sudoku solver.
 if(sat == 'SAT'):
-  print('Problem is satisfiable')
+  print('\nProblem is Satisfiable!')
+  print('\nSolved Puzzle:\n')
   numbers = f.readline()
   asArr = numbers.split(' ')
 
   for i in range(len(asArr)):
     asArr[i] = int(asArr[i])
 
+  open_file.write("Solved Puzzle: \n")
 
   for y in range(9):
     line = ''
@@ -86,23 +108,8 @@ if(sat == 'SAT'):
           line = line + str(z + 1) + ' '
           break
     print(line + '\n')
+    open_file.write(line + '\n')
 
 else:
-  print('Problem is unsatisfiable.')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  print('\nProblem is unsatisfiable.')
+  open_file.write("'\nProblem is unsatisfiable.'")

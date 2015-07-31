@@ -1,6 +1,7 @@
 #Import the needed numbers to find which number is required for each row in the grid.
 from utils import convertBase9
 
+#-----generateRowCNF(grid)-----#
 def generateRowCNF(f, grid):
   count = 0
   for y in range(1, 10):
@@ -12,12 +13,11 @@ def generateRowCNF(f, grid):
   return count
 
 #-----generateColumnCNF(grid)-----#
-#Purpose:
 def generateColumnCNF(f, grid):
   count = 0
   for x in range(1,10):
     for z in range(1, 10):
-      for  in range(1,9):
+      for y in range(1,9):
         for i in range(y + 1, 10):
           f.write("-" + str(convertBase9(x, y, z)) + " -" + str(convertBase9(x, i, z)) + " 0\n")
           count += 1
