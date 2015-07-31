@@ -38,9 +38,9 @@ def genGrid(string):
 #Purpose: Controls the main flow of the program
 
 print("Starting the SAT Solver!\n")
-if len(sys.argv) < 2:
+if len(sys.argv) < 3:
   print("Error: Incorrect arguments")
-  print("To run: python main.py <input>")
+  print("To run: python main.py <input> <minisat path>")
   sys.exit(-1)
 
 line = parseFile(sys.argv[1])
@@ -67,7 +67,7 @@ f.write(temp)
 f.close()
 
 # input into minisat
-call(["minisat", "tempOutput.txt", "SATOutput.txt"])
+call([sys.argv[2], "tempOutput.txt", "SATOutput.txt"])
 
 # Decode output file
 f = open('SATOutput.txt','r')

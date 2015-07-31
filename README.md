@@ -10,6 +10,8 @@ Deepak Parmar, V00770095
 ##Description:
 SAT solver for Sudoku puzzles.
 
+Please refer SAT-Report.txt for more details.
+
 This program is a sudoku solver that will transform a sudoku puzzle (9x9) into an
 instance of the NP-complete SAT problem.  It will read a sudoku puzzle table and
 convert it to a set of boolean formulae (used by SAT solvers) to solve the puzzle.
